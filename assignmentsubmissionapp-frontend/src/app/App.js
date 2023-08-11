@@ -1,6 +1,7 @@
 import './App.css';
 import {useEffect, useRef} from "react";
-import {useLocalState} from "./util/useLocalStorage";
+import {useLocalState} from "../util/useLocalStorage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
   const initialized = useRef(false);
@@ -36,10 +37,11 @@ function App() {
   }, [jwt]);
 
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <div>JWT value : {jwt}</div>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+        </Routes>
+      </BrowserRouter>
   );
 }
 
