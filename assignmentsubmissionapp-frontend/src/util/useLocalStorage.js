@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 function useLocalState(defaultValue, key) {
     const [value, setValue] = useState(() => {
         const stickValue = window.localStorage.getItem(key);
-
         return stickValue !== null ? JSON.parse(stickValue) : defaultValue;
     });
 
