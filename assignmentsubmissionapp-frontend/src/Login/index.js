@@ -7,7 +7,7 @@ const Login = () => {
 
     const [jwt, setJwt] = useLocalState("", "jwt");
     function sendLoginRequest() {
-        console.log("Login clicked");
+        // console.log("Login clicked");
 
         const reqBody = {
             "username": username,

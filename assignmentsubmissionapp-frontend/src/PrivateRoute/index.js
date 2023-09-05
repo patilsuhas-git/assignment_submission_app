@@ -4,7 +4,7 @@ import {Navigate} from "react-router-dom";
 
 const PrivateRoute = ({children}) => {
     const [jwt, setJwt] = useLocalState("", "jwt");
-    console.log("JWT :::: "+jwt);
+    // console.log("JWT :::: "+jwt);
     return jwt ? children : <Navigate to="/login"/>
 };
 
