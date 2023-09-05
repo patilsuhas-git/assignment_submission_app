@@ -47,7 +47,7 @@ const Dashboard = () => {
             {/*<h1>{jwt}</h1>*/}
             {assignments ? assignments.map(assignment =>
                 <div>
-                    <Link to={`/assignments/${assignment.id}`}>Assignment ID : {assignment.id} </Link>
+                    <Link key={assignment.id} to={`/assignments/${assignment.id}`}>Assignment ID : {assignment.id} </Link>
                 </div>) : <></>};
             <button onClick={() => createAssignment()}>Submit new Assignment</button>
         </div>

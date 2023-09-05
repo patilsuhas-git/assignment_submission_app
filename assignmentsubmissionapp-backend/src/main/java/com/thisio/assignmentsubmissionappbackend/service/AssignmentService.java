@@ -4,7 +4,6 @@ import com.thisio.assignmentsubmissionappbackend.domain.Assignment;
 import com.thisio.assignmentsubmissionappbackend.domain.User;
 import com.thisio.assignmentsubmissionappbackend.repository.AssignmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.Assign;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,5 +28,9 @@ public class AssignmentService {
 
     public Optional<Assignment> findById(Long assignmentId) {
         return assignmentRepository.findById(assignmentId);
+    }
+
+    public Assignment save(Assignment assignment) {
+        return assignmentRepository.save(assignment);
     }
 }
