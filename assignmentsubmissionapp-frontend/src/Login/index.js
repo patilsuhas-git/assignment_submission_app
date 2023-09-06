@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useLocalState} from "../util/useLocalStorage";
+import ajax from "../Services/fetchService";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -13,13 +14,8 @@ const Login = () => {
             "username": username,
             "password": password
         };
-        fetch("api/auth/login", {
-            headers: {
-              "Content-Type": "application/json"
-            },
-            method: "post",
-            body: JSON.stringify(reqBody)
-        }).then((response)=> {
+        ajax("api/auth/login", "POST", null, reqBody)
+        .then((response)=> {
             if(response.status === 200) {
                 return Promise.all([response.json(), response.headers]);
             } else {

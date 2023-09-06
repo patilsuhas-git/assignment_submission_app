@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useLocalState} from "../util/useLocalStorage";
+import ajax from "../Services/fetchService";
 
 const AssignmentView = () => {
     const assignmentId = window.location.href.split("/assignments/")[1];
@@ -17,39 +18,27 @@ const AssignmentView = () => {
 
     useEffect(() => {
         return () => {
-            //console.log("This is useEffect for loading page");
-            fetch(`/api/assignments/${assignmentId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization" : `Bearer ${jwt}`
-                },
-                method: "GET"
-            }).then((response => {
-                if(response.status === 200) {
-                    return response.json();
-                }
-            })).then((assignmentData) => {
+            ajax(`/api/assignments/${assignmentId}`, "GET", jwt, null)
+                .then((response => {
+                    if(response.status === 200) {
+                        return response.json();
+                    }
+                }))
+                .then((assignmentData) => {
                 setAssignment(assignmentData);
             })
         };
     }, []);
 
     function save(){
-        fetch(`/api/assignments/${assignmentId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization" : `Bearer ${jwt}`
-            },
-            method: "PUT",
-            body: JSON.stringify(assignment)
-        }).then((response => {
-            if(response.status === 200) {
-                return response.json();
-            }
-            console.log(response);
-        })).then((assignmentData) => {
-            setAssignment(assignmentData);
-        })
+        ajax(`/api/assignments/${assignmentId}`, "PUT", jwt, assignment)
+            .then((response => {
+                if(response.status === 200) {
+                    return response.json();
+                }
+            })).then((assignmentData) => {
+                setAssignment(assignmentData);
+            });
     }
 
     return (
