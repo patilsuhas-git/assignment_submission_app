@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocalState} from "../util/useLocalStorage";
 import ajax from "../Services/fetchService";
+import {Button} from "react-bootstrap";
 
 const AssignmentView = () => {
     const assignmentId = window.location.href.split("/assignments/")[1];
@@ -59,7 +60,7 @@ const AssignmentView = () => {
                                         value={assignment.branch}
                     />
                     </h3>
-                    <button onClick={() => save()}>Submit Assignment</button>
+                    <Button size="lg" onClick={() => save()}>Submit Assignment</Button>
                 </>
             ) : (<>
                     <h1>This assignment do not exist.</h1>

@@ -7,7 +7,7 @@ public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String name;
     private String githubUrl;
     private String status;
     private String branch;
@@ -23,6 +23,13 @@ public class Assignment {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getGithubUrl() {
         return githubUrl;
     }

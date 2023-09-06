@@ -1,6 +1,7 @@
 package com.thisio.assignmentsubmissionappbackend.web;
 
 import com.thisio.assignmentsubmissionappbackend.domain.User;
+import com.thisio.assignmentsubmissionappbackend.dto.AssignmentValidationResult;
 import com.thisio.assignmentsubmissionappbackend.dto.AuthCredentialsRequest;
 import com.thisio.assignmentsubmissionappbackend.filter.JwtFilter;
 import com.thisio.assignmentsubmissionappbackend.util.JwtUtil;
@@ -52,20 +53,15 @@ public class AuthController {
     public ResponseEntity<?> validateToken(@RequestParam String token, @AuthenticationPrincipal User user) {
         try{
             Boolean isValid = jwtUtil.validateToken(token, user);
-            ValidateResult result = new ValidateResult();
+            AssignmentValidationResult result = new AssignmentValidationResult();
             result.message = "Is is ok";
             result.isValid = true;
             return ResponseEntity.ok(result);
         } catch(ExpiredJwtException jwtExcp) {
-            ValidateResult result = new ValidateResult();
-            result.message = "Is is not not not not ok";
+            AssignmentValidationResult result = new AssignmentValidationResult();
             result.isValid = false;
+            result.message = "Is is not not not not ok";
             return ResponseEntity.ok(false);
         }
-    }
-
-    public class ValidateResult {
-        public String message;
-        public Boolean isValid;
     }
 }
