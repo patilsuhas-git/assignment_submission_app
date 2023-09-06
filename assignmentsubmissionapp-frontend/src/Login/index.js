@@ -34,34 +34,54 @@ const Login = () => {
     return (
         <>
             <Container className="mt-5">
-                <FormGroup className="mb-3 fs-4" controlId="formBasicEmail">
-                    <FormLabel htmlFor="username">Username</FormLabel>
-                    <FormControl type="email"
-                           id="username"
-                           placeholder="Enter your username here"
-                           value={username || ""}
-                           onChange={
-                               (e) => setUsername(e.target.value)
-                           }
-                    />
-                </FormGroup>
-                <FormGroup className="mb-3 fs-4" controlId="formBasicEmail">
-                    <FormLabel htmlFor="password">Password</FormLabel>
-                    <FormControl type="password"
-                           id="password"
-                           placeholder="Enter your password here"
-                           value={password}
-                           onChange={(e) => setPassword(e.target.value)}
-                    />
-                </FormGroup>
-                <Button id="submit"
-                        className="mt-3"
-                        type="button"
-                        onClick={() => sendLoginRequest()}
-                        size="lg"
-                >
-                    Login
-                </Button>
+                <div className="justify-content-center align-item-center">
+                    <Row className="justify-content-center align-item-center">
+                        <Col md="8" lg="6">
+                            <FormGroup className="mb-3 fs-4" controlId="formBasicEmail">
+                                <FormLabel >Username</FormLabel>
+                                <FormControl type="email"
+                                             placeholder="Enter your username here"
+                                             value={username || ""}
+                                             onChange={
+                                                 (e) => setUsername(e.target.value)
+                                             }
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+
+                    <Row className="justify-content-center align-item-center">
+                        <Col md="8" lg="6">
+                            <FormGroup className="mb-3 fs-4" controlId="password">
+                                <FormLabel>Password</FormLabel>
+                                <FormControl type="password"
+                                             placeholder="Enter your password here"
+                                             value={password}
+                                             onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+
+                    <Row className="justify-content-center align-item-center">
+                        <Col md="8" lg="6" className="mt-3 d-flex flex-column gap-5 flex-md-row justify-content-md-between">
+                            <Button id="submit"
+                                    type="button"
+                                    onClick={() => sendLoginRequest()}
+                                    size="lg"
+                            >
+                                Login
+                            </Button>
+                            <Button variant="secondary"
+                                    type="button"
+                                    onClick={() => {window.location.href = "/"}}
+                                    size="lg"
+                            >
+                                Exit
+                            </Button>
+                        </Col>
+                    </Row>
+                </div>
             </Container>
         </>
     );
