@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {useLocalState} from "../util/useLocalStorage";
 import ajax from "../Services/fetchService";
+import {Button, Col, Container, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -32,29 +33,36 @@ const Login = () => {
 
     return (
         <>
-            <div>
-                <label htmlFor="username">Username</label>
-                <input type="email"
-                       id="username"
-                       value={username || ""}
-                       onChange={
-                           (e) => setUsername(e.target.value)
-                       }
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password</label>
-                <input type="password"
-                       id="password"
-                       value={password}
-                       onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <div>
-                <button is="submit" type="button" onClick={() => sendLoginRequest()}>
+            <Container className="mt-5">
+                <FormGroup className="mb-3 fs-4" controlId="formBasicEmail">
+                    <FormLabel htmlFor="username">Username</FormLabel>
+                    <FormControl type="email"
+                           id="username"
+                           placeholder="Enter your username here"
+                           value={username || ""}
+                           onChange={
+                               (e) => setUsername(e.target.value)
+                           }
+                    />
+                </FormGroup>
+                <FormGroup className="mb-3 fs-4" controlId="formBasicEmail">
+                    <FormLabel htmlFor="password">Password</FormLabel>
+                    <FormControl type="password"
+                           id="password"
+                           placeholder="Enter your password here"
+                           value={password}
+                           onChange={(e) => setPassword(e.target.value)}
+                    />
+                </FormGroup>
+                <Button id="submit"
+                        className="mt-3"
+                        type="button"
+                        onClick={() => sendLoginRequest()}
+                        size="lg"
+                >
                     Login
-                </button>
-            </div>
+                </Button>
+            </Container>
         </>
     );
 };
